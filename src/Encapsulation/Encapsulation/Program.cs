@@ -3,6 +3,7 @@ using Encapsulation.Employment;
 using System;
 using Encapsulation.Calendar;
 using Encapsulation.Banking;
+using Encapsulation.Extra; // Tambahkan namespace ini untuk akses kelas Member
 
 namespace Encapsulation;
 
@@ -42,7 +43,6 @@ public class Program
         invalidDate.DisplayDate();
 
         // Banking
-
         BankAccount account = new BankAccount("123456789", "John Doe", 1000.0);
         Console.WriteLine($"Initial balance: {account.GetBalance()}");
 
@@ -52,7 +52,20 @@ public class Program
         account.Withdraw(200.0);
         Console.WriteLine($"Balance after withdrawal: {account.GetBalance()}");
 
-        // Extra
+        // Extra (Bagian ini ditambahkan)
+        try
+        {
+            Member anggota = new Member();
+            anggota.SetNama("Budi Santoso");
+            anggota.SetUsia(22);
+            anggota.SetEmail("budi.santoso@example.com");
 
+            Console.WriteLine("Informasi Anggota:");
+            Console.WriteLine(anggota.ToString());
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 }
